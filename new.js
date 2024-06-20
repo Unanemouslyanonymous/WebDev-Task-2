@@ -195,6 +195,7 @@ class Projectile {
         this.y = y;
         this.radius = 20;
         this.gravity = 0.3;
+        this.alpha = 1;
 
         this.animations = {
             shoot: { img: null, frameWidth: 0, frameHeight: 0, frames: 6 },
@@ -232,7 +233,7 @@ class Projectile {
             this.y += this.velocityY;
         }
 
-        
+        this.alpha = this.alpha - 0.01;
         this.frameCounter++;
         if (this.frameCounter >= this.frameDelay) {
             this.currentFrame = (this.currentFrame + 1) % this.animations[this.currentAnimation].frames;
@@ -241,6 +242,8 @@ class Projectile {
     }
 
     draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
         const animation = this.animations[this.currentAnimation];
         const frameX = this.currentFrame * animation.frameWidth;
         if (animation.img) {
@@ -252,6 +255,7 @@ class Projectile {
                 this.radius * 2, this.radius * 2
             );
         }
+        ctx.restore();
     }
 
     setAnimation(animation) {
@@ -862,7 +866,7 @@ function animate() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = 'rgba(0, 0, 0, 0)';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
     ctx.fillRect(0, floorY, canvas.width, canvas.height - floorY);
 
     handleInput();
