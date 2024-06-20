@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Shooting Game</title>
+    <style>
+        body{
+            background-image: url("./assets/background.jpg");
+            background-size: cover;
+            margin: 0; 
+            overflow: hidden;
+        }
+        #pauseButton {
+            color: lavenderblush;
+            height: 20px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        #restartButton {
+            color: lavenderblush;
+            height: 20px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .controls {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .controls button {
+            display:inline-flex;
+            justify-content: center ;
+            font-size: 16px;
+        }
+        .hitpoints-bar {
+            position: absolute;
+            margin-top: 10px;        
+            justify-content: center;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .hitpoints-bar-inner {
+            height: 100%;
+            transition: width 0.2s, background-color 0.2s;
+        }
+        #score{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            color: #fff;
+        }
+        #best{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/8940f6c3f0.js" crossorigin="anonymous"></script>
+    <div class="controls">
+        <i class = "fa-solid fa-2x" id="pauseButton"></i>
+        <i class = "fa-solid fa-rotate-left fa-2x" id="restartButton"></i>
+    </div>
+    <div id="score"></div>
+    <div id ="best"></div>
+    <div class="hitpoints-bar">
+        <div class="hitpoints-bar-inner" id="hpBar"></div>
+    </div>
+    <canvas></canvas>
+    <script src="new.js"></script>
+</body>
+</html>
