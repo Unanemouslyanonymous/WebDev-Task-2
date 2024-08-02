@@ -76,7 +76,10 @@ class Player {
         }
         this.x += this.velocityX;
         this.y += this.velocityY;
-
+        if( this.x <0) this.x = 0;
+        if(this.x > canvas.width - this.width){
+            this.x = canvas.width - this.width;
+        }
         if (this.y >= floorY - this.height) {
             this.y = floorY - this.height;
             this.onGround = true;
